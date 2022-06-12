@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continents: {
+    continent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    languajes: {
+    languages: {
       type: DataTypes.STRING,
       allowNull: false,
     },
