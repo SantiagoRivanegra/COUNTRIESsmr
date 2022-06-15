@@ -42,12 +42,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     subRegion: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING
     },
     languages: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING
     },
     area: {
       type: DataTypes.INTEGER,
@@ -58,8 +56,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     coatOfArms: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING
     },
     createdInDb: {
       type: DataTypes.BOOLEAN,
@@ -74,8 +71,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     timeZones: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING
     },
   },
     {

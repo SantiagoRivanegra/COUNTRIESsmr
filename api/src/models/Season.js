@@ -5,7 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('season', {
     name: {
-      type: DataTypes.ENUM('Invierno', 'Otoño', 'Primavera', 'Verano'),
+      type: DataTypes.STRING,
+      //values: ['Invierno', 'Otoño', 'Primavera', 'Verano'],
       allowNull: false,
     },
   },
@@ -14,3 +15,4 @@ module.exports = (sequelize) => {
     }
   );
 };
+// ENUM('Invierno', 'Otoño', 'Primavera', 'Verano')
