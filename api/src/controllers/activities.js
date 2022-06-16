@@ -16,26 +16,22 @@ try {
 
 /* Create activity */
 const postActivity = async (req, res, next) => {
-  const { name, description, duration, difficulty, seasons, countries } = req.body
+  const { name, description, duration, difficulty, season, countries } = req.body
   try {
     let newActivity = await Activity.create({
       name,
       description,
       duration,
       difficulty,
+      season
     })
     let activityCountry = await Country.findAll({
       where:{
         nameCommon : countries
       }      
     })
-    let activitySeason = await Season.findAll({
-      where:{
-        name : seasons
-      }
-    })
+
     newActivity.addCountry(activityCountry)
-    newActivity.addSeason(activitySeason)
     res.status(200).send('Actividad creada')
   } catch (error) {
     next(error)

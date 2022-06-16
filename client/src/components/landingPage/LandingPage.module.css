@@ -1,0 +1,69 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-image: url('../../images/landingPage.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.containerTittle{
+  height: 260px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.letterC{
+  margin: 10px;
+  color: rgb(127, 255, 212);  
+  font-size: 80px;
+  font-family: Georgia;
+  margin-left: 1px;
+  margin-right: 1px;
+  text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+}
+.letterC:hover{
+  font-size: 70px;
+  text-shadow: black 0 -5px;
+}
+
+.letterS{
+  margin: 70px;
+  color: rgb(127, 255, 212);  
+  font-size: 15px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+.letterS:hover{
+  font-size: 13px;
+}
+
+.butIngresar{
+  border-radius: 5px;
+  font-size: 30px;
+  color: blue;
+  width: 150px;
+  height: 50px;
+  position: center bottom;
+  background-color: rgba(127, 255, 212, 0.8);
+  animation: tiembla 2s infinite;
+}
+
+.butIngresar:hover{
+  cursor: pointer;
+
+}
+
+.copyright {
+  position: center;
+  color: rgb(187, 195, 212);
+  margin-top: 310px;
+}
+
+@keyframes tiembla{
+  0%  { -webkit-transform:rotateZ( 0deg); }
+  50% { -webkit-transform:rotateZ( 0deg) scale(.8); }
+  100%{ -webkit-transform:rotateZ( 0deg); }
+}

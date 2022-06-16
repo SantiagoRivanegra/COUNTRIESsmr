@@ -1,0 +1,13 @@
+.container {
+  background-image: url('../../images/pageNotFound.png');
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.copyright {
+  margin-top: 470px;
+}

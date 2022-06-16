@@ -45,7 +45,7 @@ const getApiCountries = async () =>{
 const getDbCountries = async () => {
   const dbInfo = await Country.findAll({
     include: {model: Activity,
-              attribute: ['name', 'duration', 'difficulty', 'description'],
+              attribute: ['name', 'duration', 'difficulty', 'description', 'season'],
               through: {attributes: []}
             }
   })

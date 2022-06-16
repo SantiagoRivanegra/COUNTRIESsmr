@@ -1,0 +1,16 @@
+{
+  "name": "Capoeira",
+  "description": "act de prueba3",
+  "duration": 1,
+  "difficulty": 1,
+  "season": ["Primavera", "Verano"],
+  "countries": ["Brazil"]
+}
+{
+  "name": "Sky",
+  "description": "act de prueba2",
+  "duration": 2,
+  "difficulty": 3,
+  "season": ["Invierno"],
+  "countries": ["Argentina"]
+}
