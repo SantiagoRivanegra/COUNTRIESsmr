@@ -44,6 +44,7 @@ const getApiCountries = async () =>{
 /* All DB countries */
 const getDbCountries = async () => {
   const dbInfo = await Country.findAll({
+    limit: 1,
     include: {model: Activity,
               attribute: ['name', 'duration', 'difficulty', 'description', 'season'],
               through: {attributes: []}
@@ -52,18 +53,20 @@ const getDbCountries = async () => {
   return dbInfo
 }
 
-/* All countries */
+/* All API countries */
 const getAllCountries = async () => {
   await getApiCountries()
   return await Country.findAll({
+    limit: 1,
     include: {model: Activity}
   })
 }
 
+/* Get all countries */
 const getAll = async () => {
-  const apiInfoC = await getAllCountries()
-  const dbInfoC = await getDbCountries()
-  infoTotal = apiInfoC.concat(dbInfoC)
+  const apiCountries = await getAllCountries()
+  const dbCountries = await getDbCountries()
+  infoTotal = apiCountries.concat(dbCountries)
   return infoTotal
   
 }
