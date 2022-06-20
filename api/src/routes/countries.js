@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAll, getCountryById } = require('../controllers/countries')
+const { getDbCountries, getCountryById } = require('../controllers/countries')
 
 
 const router = Router();
@@ -20,10 +20,12 @@ router.get('', async (req, res) => {
 
 
 //Get all countries
-router.get('/all', async (__req, res) => {
-  const allCountries = await getAll()
-  res.status(200).send(allCountries)
-})
+// router.get('/all', async (req, res) => {
+//   const allCountries = await getDbCountries()
+//   res.status(200).send(allCountries)
+// })
+
+router.get('/all', getDbCountries)
 
 //Get country by ID
 router.get('/:id', getCountryById)

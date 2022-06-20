@@ -14,3 +14,11 @@
   "season": ["Invierno"],
   "countries": ["Argentina"]
 }
+{
+  "name": "Fulbito",
+  "description": "act de prueba",
+  "duration": 3,
+  "difficulty": 5,
+  "season": ["Primavera"],
+  "countries": ["Argentina"]
+}

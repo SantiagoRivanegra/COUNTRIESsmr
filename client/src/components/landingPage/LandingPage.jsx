@@ -20,7 +20,7 @@ export default function LandingPage(){
             <h3 className={s.letterS}>M</h3>
             <h3 className={s.letterS}>R</h3>
           </div>
-          <Link to='/countries'>
+          <Link to='/countries/all'>
             <button className={s.butIngresar}>Ingresar</button>
           </Link>
         </div>
