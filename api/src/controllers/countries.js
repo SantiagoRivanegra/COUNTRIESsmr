@@ -57,7 +57,7 @@ const getDbCountries = async (req, res) => {
   
   try {
   const page = parseInt(req.query.page) || 1;
-  const pageSize = parseInt(req.query.limit) || 4;
+  const pageSize = parseInt(req.query.limit) || 10;
   const skip = (page - 1) * pageSize;
 
   const dbInfo = await Country.findAll(
@@ -129,7 +129,7 @@ const getCountryById = async (req,res) => {
     const countryId = await Country.findOne({where: {id: ID},
       include: {model: Activity}
     })
-      countryId ? res.status(200).json(countryId) : res.status(404).send('Nope')
+      countryId ? res.status(200).json(countryId) : res.status(404).send('Nope countryController line 132')
     }
      catch (error) {
     console.log(error)
