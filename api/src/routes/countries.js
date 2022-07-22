@@ -29,9 +29,5 @@ router.get('/all', getDbCountries)
 
 //Get country by ID
 router.get('/:id', getCountryById)
-//Get country by Name
-//router.get('/:name', getCountryByName)
-//Get country by Continent
-//router.get('/:continent', getCountriesByContinent)
 
 module.exports = router;
