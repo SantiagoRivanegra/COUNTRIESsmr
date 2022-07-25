@@ -77,14 +77,16 @@ const getCountryById = async (req,res) => {
 
 /* Country by Name */
 const getCountryByName = async (req, res) => {
-  const {id} = req.params
-  const ID = id.toUpperCase()
+  const { name } = req.query
   try {
-    const countryId = await Country.findOne({where: {id: ID},
-      include: {model: Activity}
-    })
-      countryId ? res.status(200).json(countryId) : res.status(404).send('Nope')
+    const allCountries = await getAllCountries()
+    if(name){
+      let countryName = allCountries.filter(c => c.nameCommon.toLowerCase().includes(name.toLowerCase()))
+      countryName.length ? 
+      res.status(200).send(countryName) :
+      res.status(404).send('Country not found')
     }
+  }
      catch (error) {
     console.log(error)
   }
