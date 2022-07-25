@@ -54,7 +54,7 @@ const getAll = async (req, res) => {
     const apiCountries = await getAllCountries()
     res.status(200).send(apiCountries)
   } catch (error) {
-    console.error(error + 'line77controllerCountry')
+    console.error(error + 'line57controllerCountry')
     res.status(404).send('No anda')
   }
 }
@@ -75,7 +75,25 @@ const getCountryById = async (req,res) => {
   }
 }
 
+/* Country by Name */
+const getCountryByName = async (req, res) => {
+  const { name } = req.query
+  try {
+    const allCountries = await getAllCountries()
+    if(name){
+      let countryName = allCountries.filter(c => c.nameCommon.toLowerCase().includes(name.toLowerCase()))
+      countryName.length ? 
+      res.status(200).send(countryName) :
+      res.status(404).send('Country not found')
+    }
+  }
+     catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   getAll,
   getCountryById,
+  getCountryByName
 }
