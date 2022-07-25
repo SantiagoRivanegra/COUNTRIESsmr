@@ -54,7 +54,7 @@ const getAll = async (req, res) => {
     const apiCountries = await getAllCountries()
     res.status(200).send(apiCountries)
   } catch (error) {
-    console.error(error + 'line77controllerCountry')
+    console.error(error + 'line57controllerCountry')
     res.status(404).send('No anda')
   }
 }
@@ -75,7 +75,23 @@ const getCountryById = async (req,res) => {
   }
 }
 
+/* Country by Name */
+const getCountryByName = async (req, res) => {
+  const {id} = req.params
+  const ID = id.toUpperCase()
+  try {
+    const countryId = await Country.findOne({where: {id: ID},
+      include: {model: Activity}
+    })
+      countryId ? res.status(200).json(countryId) : res.status(404).send('Nope')
+    }
+     catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   getAll,
   getCountryById,
+  getCountryByName
 }
