@@ -75,9 +75,9 @@ const getCountryById = async (req,res) => {
   }
 }
 
-/* Country by Name */
-const getCountryByName = async (req, res) => {
-  const { name } = req.query
+/* Country by Name or Continent*/
+const getCountryByNameOrContinent = async (req, res) => {
+  const { name, continent } = req.query
   try {
     const allCountries = await getAllCountries()
     if(name){
@@ -86,14 +86,20 @@ const getCountryByName = async (req, res) => {
       res.status(200).send(countryName) :
       res.status(404).send('Country not found')
     }
+    if(continent){
+      let contientName = allCountries.filter(c => c.continent.toLowerCase().includes(continent.toLowerCase()))
+      contientName.length ? 
+      res.status(200).send(contientName) :
+      res.status(404).send('Continent not found')
+    }
   }
      catch (error) {
-    console.log(error)
+    console.log(error + 'line91ControllerCountry')
   }
 }
 
 module.exports = {
   getAll,
   getCountryById,
-  getCountryByName
+  getCountryByNameOrContinent
 }
