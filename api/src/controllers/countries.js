@@ -40,85 +40,24 @@ const getApiCountries = async () =>{
   }
 }
 
-
-/* All DB countries */
-const getDbCountries = async (req, res) => {
-  // const perPage = 10
-  // const page = 2
-  // const dbInfo = await Country.findAll(
-  //   {skip: perPage * page, limit: perPage},
-  //   {include: 
-  //     {model: Activity,
-  //             attribute: ['name', 'duration', 'difficulty', 'description', 'season'],
-  //             through: {attributes: []}
-  //           },
-  // })
-  // return dbInfo
-  
-  try {
-  const page = parseInt(req.query.page) || 1;
-  const pageSize = parseInt(req.query.limit) || 4;
-  const skip = (page - 1) * pageSize;
-
-  const dbInfo = await Country.findAll(
-    {
-      include: 
-      {model: Activity,
-        attribute: ['name', 'duration', 'difficulty', 'description', 'season'],
-        through: {attributes: []}
-      },
-      limit: pageSize, 
-      offset: skip,
-    }
-  )
-
-  const total = 250
-  
-  const pages = Math.ceil(total / pageSize);
-
-  if (page > pages) {
-    return res.status(404).json({
-      status: "fail",
-      message: "No page found",
-    });
-  }
-
-  const result = await dbInfo;
-
-  res.status(200).json({
-    status: "success",
-    count: result.length,
-    page,
-    pages,
-    data: result,
-  });
-    
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      status: "error",
-      message: "Server Error",
-    });
-  }
+/* All API countries */
+const getAllCountries = async () => {
+  await getApiCountries()
+  return await Country.findAll({
+    include: {model: Activity}
+  })
 }
 
-
-// /* All API countries */
-// const getAllCountries = async () => {
-//   await getApiCountries()
-//   return await Country.findAll({
-//     limit: 1,
-//     include: {model: Activity}
-//   })
-// }
-
-// /* Get all countries */
-// const getAll = async () => {
-//   const apiCountries = await getAllCountries()
-//   const dbCountries = await getDbCountries()
-//    infoTotal = apiCountries.concat(dbCountries)
-//   return infoTotal
-// }
+/* Get all countries */
+const getAll = async (req, res) => {
+  try {
+    const apiCountries = await getAllCountries()
+    res.status(200).send(apiCountries)
+  } catch (error) {
+    console.error(error + 'line77controllerCountry')
+    res.status(404).send('No anda')
+  }
+}
 
 
 /* Country by ID */
@@ -137,6 +76,6 @@ const getCountryById = async (req,res) => {
 }
 
 module.exports = {
-  getDbCountries,
+  getAll,
   getCountryById,
 }

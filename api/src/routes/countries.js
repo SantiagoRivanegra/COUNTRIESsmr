@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getDbCountries, getCountryById } = require('../controllers/countries')
+const { getAll, getCountryById } = require('../controllers/countries')
 
 
 const router = Router();
@@ -25,7 +25,7 @@ router.get('', async (req, res) => {
 //   res.status(200).send(allCountries)
 // })
 
-router.get('/all', getDbCountries)
+router.get('/all', getAll)
 
 //Get country by ID
 router.get('/:id', getCountryById)

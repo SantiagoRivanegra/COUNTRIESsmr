@@ -1,7 +1,7 @@
 import React from "react";
 import { getCountries } from '../../redux/actions'
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 function Countries(){
   const dispatch = useDispatch()
@@ -16,7 +16,7 @@ function Countries(){
   {
     countries ? countries.map(c =>{
         return(
-                      <div key={c.id}>
+              <div key={c.id}>
               <h3>{c.nameCommon}</h3>
               <img src={c.flag} alt={c.nameCommon}/>
             </div>
