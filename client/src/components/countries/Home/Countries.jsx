@@ -1,5 +1,5 @@
 import React from "react";
-import { getCountries } from '../../redux/actions'
+import { getCountries } from '../../../redux/actions'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
