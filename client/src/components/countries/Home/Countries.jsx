@@ -30,7 +30,7 @@ function Countries(){
     <div>
       <div>
         {/* Barra de Busqueda */}  
-        {/* <SearchBar />  */}
+        <SearchBar /> 
 
         {/* Paginado */} 
         <Paged 
