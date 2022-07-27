@@ -77,7 +77,7 @@ const getCountryById = async (req,res) => {
 
 /* Country by Name or Continent*/
 const getCountryByName = async (req, res) => {
-  const { name, continent } = req.query
+  const { name } = req.query
   try {
     const allCountries = await getAllCountries()
     if(name){
