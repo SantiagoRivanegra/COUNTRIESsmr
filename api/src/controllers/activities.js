@@ -123,11 +123,26 @@ const postActivity = async (req, res, next) => {
   }
 }
 
+
+/* Delete activity */
+const deleteActivity = async (req, res) => {
+  const { id } = req.params
+  try {
+    await Activity.destroy({
+      where: { id: id}
+    })
+    return res.status(200).send(`Activity ${id} has been deleted`)
+  } catch (error) {
+    console.log(error + ' DeleteAcivitiesControllerActivity')
+    }
+}
+
 module.exports = {
   getActivities,
   postActivity,
   getActivitiesByDifficulty, 
   getActivitiesByDuration, 
   getActivitiesBySeason, 
-  getActivitiesByName
+  getActivitiesByName,
+  deleteActivity
 }

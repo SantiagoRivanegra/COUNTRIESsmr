@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getActivities, getActivitiesByDifficulty, getActivitiesByDuration, getActivitiesBySeason, getActivitiesByName, postActivity} = require('../controllers/activities')
+const { getActivities, getActivitiesByDifficulty, getActivitiesByDuration, getActivitiesBySeason, getActivitiesByName, postActivity, deleteActivity} = require('../controllers/activities')
 
 const router = Router();
 
@@ -20,5 +20,8 @@ router.get('/name=:name', getActivitiesByName)
 
 //Create Activity
 router.post('/', postActivity)
+
+//Delete Activity
+router.delete('/:id', deleteActivity)
 
 module.exports = router;
