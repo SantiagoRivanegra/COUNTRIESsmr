@@ -4,19 +4,17 @@ const { getAll, getCountryById, getCountryByName, getCountriesByPopulation, getC
 
 const router = Router();
 
-
-
-//Get Countries By Continent
-router.get('/all/continent/:continent', getCountriesByContinent)
-
 //Get all Countries
 router.get('/all', getAll)
+
+//Get country by Name
+router.get('/:name', getCountryByName)
 
 //Get country by ID
 router.get('/:id', getCountryById)
 
-//Get country by Name
-router.get('', getCountryByName)
+//Get Countries By Continent
+router.get('/all/continent/:continent', getCountriesByContinent)
 
 //Get countries more or equal population to the enter number
 router.get('/all/population/:population', getCountriesByPopulation)

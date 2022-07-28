@@ -14,6 +14,7 @@ try {
   }
 }
 
+/* Activities by Difficulty */
 const getActivitiesByDifficulty = async (req, res) => {
   const { difficulty } = req.params
   try {
@@ -33,6 +34,8 @@ const getActivitiesByDifficulty = async (req, res) => {
   }
 }
 
+/* Activities by Season */
+//Hacer dinamico el Season[i], Tiene que haber valores en todas las posiciones para que no rompa
 const getActivitiesBySeason = async (req, res) => {
   const { season } = req.params
   try {
@@ -42,7 +45,7 @@ const getActivitiesBySeason = async (req, res) => {
                 through: {attributes: []}}
     })
     if(season){
-      let seasonActivities = allActivities.filter(a => a.season.toLowerCase().includes(season.toLowerCase()))
+      let seasonActivities = allActivities.filter(a => a.season[0].toLowerCase().includes(season.toLowerCase()))
       seasonActivities.length ? 
       res.status(200).send(seasonActivities) :
       res.status(404).send('Activities not found')
@@ -52,6 +55,7 @@ const getActivitiesBySeason = async (req, res) => {
   }
 }
 
+/* Activities by Duration */
 const getActivitiesByDuration  = async (req, res) => {
   const { duration } = req.params
   try {
@@ -72,6 +76,7 @@ const getActivitiesByDuration  = async (req, res) => {
   }
 }
 
+/* Activities by Name */
 const getActivitiesByName  = async (req, res) => {
   const { name } = req.params
   try {
