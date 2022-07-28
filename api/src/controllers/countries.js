@@ -54,7 +54,7 @@ const getAll = async (req, res) => {
     const apiCountries = await getAllCountries()
     res.status(200).send(apiCountries)
   } catch (error) {
-    console.error(error + 'line57controllerCountry')
+    console.error(error + 'GetAllControllerCountry')
     res.status(404).send('No anda')
   }
 }
@@ -75,9 +75,9 @@ const getCountryById = async (req,res) => {
   }
 }
 
-/* Country by Name or Continent*/
-const getCountryByNameOrContinent = async (req, res) => {
-  const { name, continent } = req.query
+/* Country by Name*/
+const getCountryByName = async (req, res) => {
+  const { name } = req.params
   try {
     const allCountries = await getAllCountries()
     if(name){
@@ -86,6 +86,17 @@ const getCountryByNameOrContinent = async (req, res) => {
       res.status(200).send(countryName) :
       res.status(404).send('Country not found')
     }
+  }
+     catch (error) {
+    console.log(error + 'GetByNameControllerCountry')
+  }
+}
+
+/* Country by Continent*/
+const getCountriesByContinent = async (req, res) => {
+  const { continent } = req.params
+  try {
+    const allCountries = await getAllCountries()
     if(continent){
       let contientName = allCountries.filter(c => c.continent.toLowerCase().includes(continent.toLowerCase()))
       contientName.length ? 
@@ -94,12 +105,31 @@ const getCountryByNameOrContinent = async (req, res) => {
     }
   }
      catch (error) {
-    console.log(error + 'line91ControllerCountry')
+    console.log(error + 'GetByNameControllerCountry')
+  }
+}
+
+/* Countries more than x population*/
+const getCountriesByPopulation = async (req, res) => {
+  const { population } = req.params
+  try {
+    const allCountries = await getAllCountries()
+    if(population){
+      let populationCountries = allCountries.filter(c => c.population > population)
+      populationCountries.length ? 
+      res.status(200).send(populationCountries) :
+      res.status(404).send('Continent not found')
+    }
+  }
+     catch (error) {
+    console.log(error + 'GetByNameControllerCountry')
   }
 }
 
 module.exports = {
   getAll,
   getCountryById,
-  getCountryByNameOrContinent
+  getCountryByName,
+  getCountriesByPopulation,
+  getCountriesByContinent
 }

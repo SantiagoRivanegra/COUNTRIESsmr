@@ -1,59 +1,102 @@
 const { Country, Activity } = require('../db')
 
 /* Get all activities */
-const getActivities = async (req, res, next) => {
-// try {
-//   let allActivities = await Activity.findAll({
-//     include :{model: Country,
-//               attributes: ['nameCommon'],
-//               through: {attributes: []}}
-//   })
-//   return res.status(200).json(allActivities)
-// } catch (error) {
-//   next(error)
-// }
-
+const getActivities = async (req, res,) => {
 try {
-  const page = parseInt(req.query.page) || 1;
-  const pageSize = parseInt(req.query.limit) || 4;
-  const skip = (page - 1) * pageSize;
-
-  const {count, rows} = await Activity.findAndCountAll(
-    {
+  let allActivities = await Activity.findAll({
     include :{model: Country,
               attributes: ['nameCommon'],
-              through: {attributes: []}
-      },
-      limit: pageSize, 
-      offset: skip,
-    }
-  )
-
-  const total = count
-  
-  const pages = Math.ceil(total / pageSize);
-
-  if (page > pages) {
-    return res.status(404).json({
-      status: "fail",
-      message: "No page found",
-    });
-  }
-
-  const result = await rows;
-
-  res.status(200).json({
-    status: "success",
-    count: result.length,
-    page,
-    pages,
-    data: result,
-  });
+              through: {attributes: []}}
+  })
+  return res.status(200).json(allActivities)
 } catch (error) {
-  next(error)
+  console.log(error + ' GetAcivitiesControllerActivity')
+  }
 }
 
+/* Activities by Difficulty */
+const getActivitiesByDifficulty = async (req, res) => {
+  const { difficulty } = req.params
+  try {
+    let allActivities = await Activity.findAll({
+      include :{model: Country,
+                attributes: ['nameCommon'],
+                through: {attributes: []}}
+    })
+    if(difficulty){
+      let diffActivities = allActivities.filter(a => a.difficulty === difficulty)
+      diffActivities.length ? 
+      res.status(200).send(diffActivities) :
+      res.status(404).send('Activities not found')
+    }
+  } catch (error) {
+    console.log(error + ' GetByDiffControllerActivity')    
+  }
 }
+
+/* Activities by Season */
+//Hacer dinamico el Season[i], Tiene que haber valores en todas las posiciones para que no rompa
+const getActivitiesBySeason = async (req, res) => {
+  const { season } = req.params
+  try {
+    let allActivities = await Activity.findAll({
+      include :{model: Country,
+                attributes: ['nameCommon'],
+                through: {attributes: []}}
+    })
+    if(season){
+      let seasonActivities = allActivities.filter(a => a.season[0].toLowerCase().includes(season.toLowerCase()))
+      seasonActivities.length ? 
+      res.status(200).send(seasonActivities) :
+      res.status(404).send('Activities not found')
+    }
+  } catch (error) {
+    console.log(error + ' GetBySeasonControllerActivity')    
+  }
+}
+
+/* Activities by Duration */
+const getActivitiesByDuration  = async (req, res) => {
+  const { duration } = req.params
+  try {
+    let allActivities = await Activity.findAll({
+      include :{model: Country,
+                attributes: ['nameCommon'],
+                through: {attributes: []}}
+    })
+    if(duration){
+      dur = parseInt(duration)
+      let durationActivities = allActivities.filter(a => a.duration === dur)
+      durationActivities.length ? 
+      res.status(200).send(durationActivities) :
+      res.status(404).send('Activities not found')
+    }
+  } catch (error) {
+    console.log(error + ' GetByDurationControllerActivity')    
+  }
+}
+
+/* Activities by Name */
+const getActivitiesByName  = async (req, res) => {
+  const { name } = req.params
+  try {
+    let allActivities = await Activity.findAll({
+      include :{model: Country,
+                attributes: ['nameCommon'],
+                through: {attributes: []}}
+    })
+    if(name){
+      let nameActivities = allActivities.filter(a => a.name.toLowerCase().includes(name.toLowerCase()))
+      nameActivities.length ? 
+      res.status(200).send(nameActivities) :
+      res.status(404).send('Activities not found')
+    }
+  } catch (error) {
+    console.log(error + ' GetByNameControllerActivity')    
+  }
+}
+
+
 
 /* Create activity */
 const postActivity = async (req, res, next) => {
@@ -82,5 +125,9 @@ const postActivity = async (req, res, next) => {
 
 module.exports = {
   getActivities,
-  postActivity
+  postActivity,
+  getActivitiesByDifficulty, 
+  getActivitiesByDuration, 
+  getActivitiesBySeason, 
+  getActivitiesByName
 }
