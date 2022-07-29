@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCountries } from '../../../redux/actions'
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from 'react-router-dom'
 
 import Paged from '../../paged/Paged'
 import SearchBar from '../../searchBar/SearchBar'
@@ -37,7 +38,11 @@ function Countries(){
           countriesPerPage = {countriesPerPage}
           countries = {countries.length}
           paged = {paged}
-        />      
+        />
+        <Link to='/activities'>
+        <button>GO to activities
+        </button>
+        </Link>      
       </div>
       <div>  
         {

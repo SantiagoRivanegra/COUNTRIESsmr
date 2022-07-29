@@ -11,7 +11,6 @@ export function getCountries(){
     } catch (error) {
       console.log(error)
     }
-
   }
 }
 
@@ -27,5 +26,19 @@ export function getCountryByName(name){
       console.log(error)
     }
 
+  }
+}
+
+export function getAllActivities(){
+  return async (dispatch) => {
+    try {
+      const res = await axios('http://localhost:3001/activities')
+      return dispatch({
+        type: 'GET_ALL_ACTIVITIES',
+        payload: res.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
