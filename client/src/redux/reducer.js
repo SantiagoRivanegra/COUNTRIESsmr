@@ -16,6 +16,14 @@ export default function reducer(state = initialState, {type, payload}){
       allCountries: payload
     }
 
+    /* Get all Activities */
+    case 'GET_ALL_ACTIVITIES':
+      return{
+        ...state,
+        activities: payload,
+        allActivities: payload
+      }
+
     default: return state
   }
 }
