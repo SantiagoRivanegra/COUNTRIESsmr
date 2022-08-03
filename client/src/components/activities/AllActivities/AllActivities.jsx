@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getAllActivities } from '../../../redux/actions'
+import NavBar from '../../navBar/NavBarActivity'
 
 import s from './AllActivities.module.css'
 
@@ -17,12 +18,8 @@ function AllActivities() {
 
   return(
     <div className={s.container}>
-        {
-          allActivities && allActivities.map(a=>{
-            return(
-              <div>
-                <div>   
-                <Link to='/countries/all'>
+      <NavBar />
+      <Link to='/countries/all'>
                   <button>Back to the All Countries
                   </button>
                   </Link>      
@@ -30,6 +27,12 @@ function AllActivities() {
                   <button>GO to Create activities
                   </button>
                   </Link> 
+        {
+          allActivities && allActivities.map(a=>{
+            return(
+              <div>
+                <div>   
+
                 </div>
                 <h3>Nombre: {a.name}</h3>
                 <h3>Duration: {a.duration}</h3>

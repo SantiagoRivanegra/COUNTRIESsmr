@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import landingPage from './components/landingPage/LandingPage';
 import preCountries from './components/preCountries/PreCountries';
 import countries from './components/countries/Home/Countries';
