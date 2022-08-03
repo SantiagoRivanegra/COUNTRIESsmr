@@ -3,9 +3,12 @@ import { getCountries } from '../../../redux/actions'
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 
+import NavBar from '../../navBar/NavBarCountry'
 import Paged from '../../paged/Paged'
 import SearchBar from '../../searchBar/SearchBar'
 import Card from '../Card/Card'
+
+import s from './Countries.module.css'
 
 function Countries(){
   const dispatch = useDispatch()
@@ -28,7 +31,8 @@ function Countries(){
   }, [dispatch])
   
   return(
-    <div>
+    <div className={s.container}>
+      <NavBar />
       <div>
         {/* Barra de Busqueda */}  
         <SearchBar /> 
@@ -44,7 +48,7 @@ function Countries(){
         </button>
         </Link>      
       </div>
-      <div>  
+      <div className = {s.containerCountry}>  
         {
           currentCountry ? currentCountry.map(c =>{
             return(
