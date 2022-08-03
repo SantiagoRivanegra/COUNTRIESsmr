@@ -3,6 +3,7 @@ const initialState={
   allCountries: [],
   activities: [],
   allActivities: [],
+  spanishLang: true,
 }
 
 export default function reducer(state = initialState, {type, payload}){
@@ -23,6 +24,13 @@ export default function reducer(state = initialState, {type, payload}){
         activities: payload,
         allActivities: payload
       }
+
+      /* Change Language */
+      case 'CHANGE_LANGUAGE':
+        return {
+          ...state,
+          spanishLang: state.spanishLang === true ? false : true,
+        }
 
     default: return state
   }

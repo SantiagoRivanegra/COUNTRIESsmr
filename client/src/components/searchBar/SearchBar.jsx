@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { useSelector} from "react-redux";
+
 function SearchBar() {
+
+  const spanishLang = useSelector(state => state.spanishLang)
   return(
-    <div className="container">
-      <h4>Buscate algo bro</h4>
-      <input />
+    <div>
+      <input placeholder={spanishLang ? "Buscar" : "Search"}/>
     </div>
   )
 }
