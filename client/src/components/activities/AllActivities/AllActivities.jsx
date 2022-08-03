@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import { getAllActivities } from '../../../redux/actions'
 
+import s from './AllActivities.module.css'
+
 function AllActivities() {
 
   const dispatch = useDispatch()
@@ -14,12 +16,16 @@ function AllActivities() {
   }, [dispatch])
 
   return(
-    <div>
+    <div className={s.container}>
         {
           allActivities && allActivities.map(a=>{
             return(
               <div>
-                <div>        
+                <div>   
+                <Link to='/countries/all'>
+                  <button>Back to the All Countries
+                  </button>
+                  </Link>      
                   <Link to='/activities/create'>
                   <button>GO to Create activities
                   </button>

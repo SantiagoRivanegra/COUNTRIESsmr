@@ -7,6 +7,8 @@ import Paged from '../../paged/Paged'
 import SearchBar from '../../searchBar/SearchBar'
 import Card from '../Card/Card'
 
+import s from './Countries.module.css'
+
 function Countries(){
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
@@ -28,7 +30,7 @@ function Countries(){
   }, [dispatch])
   
   return(
-    <div>
+    <div className={s.container}>
       <div>
         {/* Barra de Busqueda */}  
         <SearchBar /> 
@@ -44,7 +46,7 @@ function Countries(){
         </button>
         </Link>      
       </div>
-      <div>  
+      <div className = {s.containerCountry}>  
         {
           currentCountry ? currentCountry.map(c =>{
             return(

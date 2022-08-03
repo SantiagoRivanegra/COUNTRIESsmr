@@ -27,8 +27,8 @@ function App() {
           <Route exact path = '/countries/:name/detail' component = {countryDetail}/>
 
           <Route exact path = '/activities' component = {allActivities}/>
-          <Route exact path = '/activities/:id' component = {activityDetail}/>
           <Route exact path = '/activities/create' component = {createActivity}/>
+          <Route exact path = '/activities/:id' component = {activityDetail}/>
 
           <Route path = '*' component = {pageNotFound}/>
         </Switch>
