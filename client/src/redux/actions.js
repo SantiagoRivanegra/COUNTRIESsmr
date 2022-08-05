@@ -29,6 +29,16 @@ export function getCountryByName(name){
   }
 }
 
+export function getCountryDetail(id){
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/countries/id/${id}`)
+    return dispatch({
+      type: 'GET_COUNTRY_DETAIL',
+      payload: res.data
+    })
+  }
+}
+
 export function getAllActivities(){
   return async (dispatch) => {
     try {

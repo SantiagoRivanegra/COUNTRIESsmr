@@ -1,6 +1,7 @@
 const initialState={
   countries: [],
   allCountries: [],
+  countriesID: [],
   activities: [],
   allActivities: [],
   spanishLang: true,
@@ -31,6 +32,12 @@ export default function reducer(state = initialState, {type, payload}){
           ...state,
           spanishLang: state.spanishLang === true ? false : true,
         }
+
+        case 'GET_COUNTRY_DETAIL':
+          return {
+            ...state,
+            countriesID: payload
+          }
 
     default: return state
   }
