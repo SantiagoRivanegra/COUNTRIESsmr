@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import NavBar from '../../navBar/NavBarCountry'
 import Paged from '../../paged/Paged'
 import SearchBar from '../../searchBar/SearchBar'
-import Card from '../Card/Card'
+import Card from '../CardCountry/CardCountry'
 
 import s from './Countries.module.css'
 

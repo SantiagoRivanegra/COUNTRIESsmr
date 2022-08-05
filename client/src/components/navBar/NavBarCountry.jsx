@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { changeLanguage} from "../../redux/actions";
-import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import s from './NavBarCountry.module.css'
