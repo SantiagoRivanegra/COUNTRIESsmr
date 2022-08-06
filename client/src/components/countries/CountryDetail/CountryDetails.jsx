@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { getCountryDetail} from "../../../redux/actions"
 
 import s from './CountryDetail.module.css'
-import loading from '../../../images/loading.gif'
 
 function CountryDetail() {
   const dispatch = useDispatch()
+  const spanishLang = useSelector(state => state.spanishLang);
 
+  //Traigo el detalle del pais solicitado por parametro
+  const idCountry = useSelector(state => state.countriesID)
+  
   //Obtengo el ID pasado por parametro
     const { id }  = useParams()
   
@@ -18,22 +21,24 @@ function CountryDetail() {
       dispatch(getCountryDetail(id))
     },[dispatch, id])
 
-  //Traigo el detalle del pais solicitado por parametro
-  const idCountry = useSelector(state => state.countriesID)
-
-    if(idCountry.id){    
-
   return(
     <div className={s.container}>
       {
         <div className={s.containerElements}>
-          <h1>Nombre: {idCountry.nameCommon}</h1>
+          <h1>{idCountry.nameCommon}</h1>
           <img src={idCountry.flag} alt={idCountry.nameCommon} />
-          <h3>Continente: {idCountry.continent}</h3>
-          <h3>Subregion: {idCountry.subregion}</h3>
-          <span>Capital: {idCountry.capital}</span>
-          <h3>Poblacion: {idCountry.population} Habitantes</h3>
-          <h3>Area: {idCountry.area} Km²</h3>
+          <img className={s.imgCoatOfArmas} src={idCountry.coatOfArms} alt={spanishLang ? "Escudo de Armas: " : "Coat of Arms: "} />
+          <h6>{spanishLang ? "Nombre Oficial : " : "Official Name: "} {idCountry.nameOfficial}</h6>
+          <h6>{spanishLang ? "Idiomas: " : "Languages: "} {idCountry.languages}</h6>
+          <h6>{spanishLang ? "Moneda: " : "Currency: "} {idCountry.currencyName}</h6>
+          <h6>{spanishLang ? "Moneda: " : "Currency: "} {idCountry.currencySymbol}</h6>
+          <h6>{spanishLang ? "Continente: " : "Continent"} {idCountry.continent}</h6>
+          <h6>{spanishLang ? "Región: " : "Región: "} {idCountry.region}</h6>
+          <h6>{spanishLang ? "Subregión: " : "Subregión: "} {idCountry.subRegion}</h6>
+          <h6>{spanishLang ? "Capital: " : "Capital: "} {idCountry.capital}</h6>
+          <h6>{spanishLang ? "Poblacion: " : "Population: "} {idCountry.population} Habitantes</h6>
+          <h6>{spanishLang ? "Area: " : "Area: "} {idCountry.area} Km²</h6>
+          <h6>{spanishLang ? "Zonas Horarias: " : "Time Zones: "} {idCountry.timeZones}</h6>
         </div>
             }
        <Link to = '/countries/all'>
@@ -41,76 +46,9 @@ function CountryDetail() {
        </Link>        
     </div>    
   )
-} else {
-    return(
-      <div>
-        <img src={loading} alt="Not Found"/>
-      </div>
-    )
-  }
 }
 
 export default CountryDetail
 
-
-// import CountryActivities from "./CountryActivities"
-
-// import CardActivity from "./CardActivity"
-
-
-// //Detalle de cada Pais por su ID
-// function CountryDetail(){
-//   const dispatch = useDispatch()
-
-// //Obtengo el ID pasado por parametro
-//   const { id }  = useParams()
-
-// //Cada vez que se ejecuta este componente trae el pais solicitado por parametro
-//   useEffect(() => {
-//     dispatch(getCountryDetail(id))
-//     dispatch(getActivity())
-//   },[dispatch, id])
-
-//   //Traigo el detalle del pais solicitado por parametro
-//   const idCountry = useSelector(state => state.countriesID)
-//   const activities = useSelector(state => state.activities)
-//   const act = []
-
-
-//   if(!idCountry === 'Este pais no Existe'){}
-//     if(idCountry.id === id.toUpperCase()){    
-
-//   return(
-//     <div className={s.container}>
-//       {
-//         <div className={s.containerElements}>
-//           <h1>Nombre: {idCountry.name}</h1>
-//           <img src={idCountry.flag} alt={idCountry.name} />
-//           <h3>Continente: {idCountry.continent}</h3>
-//           <h3>Subregion: {idCountry.subregion}</h3>
-//           <span>Capital: {idCountry.capital}</span>
-//           <h3>Poblacion: {idCountry.population} Habitantes</h3>
-//           <h3>Area: {idCountry.area} Km²</h3>
-//         </div>
-//             }       
-//       <div className={s.activities}>
-//         <CountryActivities activities = {idCountry.activities} />
-//       </div> 
-//        <Link to = '/countries'>
-//          <button>Volver</button>
-//        </Link>     
-//       <div className = {s.copyright}>
-//           <b>©2022 Santiago Marcos Rivanegra/SoyHenry</b>
-//       </div>         
-//     </div>    
-//   )} else {
-//     return(
-//       <div>
-//         <img src={loading} alt="Not Found"/>
-//          {/* <PageNotFound /> */}
-//       </div>
-//     )
-//   }
-// }
-
-// export default CountryDetail
+// currencyName: c.currencies ?  Object.keys(c.currencies) : 'No hay currencies',
+// currencySymbol: c.currencies ? Object.keys(c.currencies) : 'No hay currencies', //objeto.'nombredelamoneda'.symbol
