@@ -13,7 +13,7 @@
 
 .containerElements{
   background: linear-gradient(to top, transparent, rgba(185, 184, 184, 0.473));
-  width: 400px;
+  width: 550px;
   margin-left:50px;
   height: 550px;
 }
@@ -22,8 +22,7 @@
   color: rgb(187, 195, 212)
 }
 
-.copyright {
-  position: center;
-  color: rgb(187, 195, 212);
-  margin-top: 40px;
+.imgCoatOfArmas{
+  width: 35%;
+  height: 40%;
 }
