@@ -1,22 +1,25 @@
 const { Router } = require('express');
-const { getActivities, getActivitiesByDifficulty, getActivitiesByDuration, getActivitiesBySeason, getActivitiesByName, postActivity, deleteActivity} = require('../controllers/activities')
+const { getActivities, getActivitiesByDifficulty, getActivitiesByDuration, getActivitiesBySeason, getActivitiesByName, getActivityById, postActivity, deleteActivity} = require('../controllers/activities')
 
 const router = Router();
 
 //Get all Activities
 router.get('/', getActivities)
 
-//Get all Activities
+//Get Activities By Difficulty
 router.get('/difficulty=:difficulty', getActivitiesByDifficulty)
 
-//Get all Activities
+//Get Activities By Duration
 router.get('/duration=:duration', getActivitiesByDuration)
 
-//Get all Activities
+//Get Activities By Season
 router.get('/season=:season', getActivitiesBySeason)
 
-//Get all Activities
+//Get Activities By Name
 router.get('/name=:name', getActivitiesByName)
+
+//Get Activities By ID
+router.get('/id/:id', getActivityById)
 
 //Create Activity
 router.post('/', postActivity)

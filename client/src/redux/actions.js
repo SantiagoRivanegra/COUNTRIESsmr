@@ -53,6 +53,16 @@ export function getAllActivities(){
   }
 }
 
+export function getActivityDetail(id){
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/activities/id/${id}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_DETAIL',
+      payload: res.data
+    })
+  }
+}
+
 export function changeLanguage(){
 	return {
 		type: 'CHANGE_LANGUAGE'

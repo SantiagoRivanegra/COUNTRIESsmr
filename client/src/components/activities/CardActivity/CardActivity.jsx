@@ -13,7 +13,12 @@ function CardActivity({id, name, duration, difficulty, season, countries}) {
       <span>{spanishLang ? "Dificultad: " : "Difficulty: "}{difficulty}</span>
       <span>{spanishLang ? "Temporada: " : "Season: "}{season}</span>
       <span>{spanishLang ? "Paises: " : "Countries: "}{countries}</span>
-      <span><Link to={`activities/${id}`}><button>{spanishLang ? "Ver detalles" : "Show details"}</button></Link></span>
+      <span>
+        <Link to={`/activities/${id}`}>
+          <button>{spanishLang ? "Ver detalles" : "Show details"}
+          </button>
+        </Link>
+      </span>
       <br />
       <hr />
     </div>
