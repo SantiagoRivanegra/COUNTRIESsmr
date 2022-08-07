@@ -7,7 +7,7 @@ function CardActivity({id, name, duration, difficulty, season, countries}) {
   const spanishLang = useSelector(state => state.spanishLang);
 
   return(
-    <div key={id}>
+    <div>
       <h3>{spanishLang ? "Tipo: " : "Tipe: "}{name}</h3>
       <span>{spanishLang ? "Duracion: " : "Duration: "}{duration}</span>
       <span>{spanishLang ? "Dificultad: " : "Difficulty: "}{difficulty}</span>

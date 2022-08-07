@@ -28,6 +28,8 @@ function ActivityDetail() {
       {
         <div>
           <h1>{idActivity.name}</h1>
+          <h1>{idActivity.duration}</h1>
+          <h1>{idActivity.difficulty}</h1>
         </div>
             }
       </div>
