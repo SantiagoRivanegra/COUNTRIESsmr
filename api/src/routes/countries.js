@@ -8,10 +8,10 @@ const router = Router();
 router.get('/all', getAll)
 
 //Get country by Name
-router.get('/:name', getCountryByName)
+router.get('/name/:name', getCountryByName)
 
 //Get country by ID
-router.get('/:id', getCountryById)
+router.get('/id/:id', getCountryById)
 
 //Get Countries By Continent
 router.get('/all/continent/:continent', getCountriesByContinent)

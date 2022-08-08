@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Card.module.css'
+import s from './CardCountry.module.css'
 import {Link} from 'react-router-dom'
 
 //Card de cada Pais

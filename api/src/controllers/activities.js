@@ -96,6 +96,21 @@ const getActivitiesByName  = async (req, res) => {
   }
 }
 
+/* Activities by Id */
+const getActivityById = async (req, res) => {
+  const {id} = req.params
+  try {
+    const activityId = await Activity.findOne({where: {id: id},
+      include: {model: Country,
+                attributes: ['nameCommon']}
+    })
+      activityId ? res.status(200).json(activityId) : res.status(404).send('Nope')
+    }
+     catch (error) {
+    console.log(error)
+  }
+}
+
 
 
 /* Create activity */
@@ -142,7 +157,8 @@ module.exports = {
   postActivity,
   getActivitiesByDifficulty, 
   getActivitiesByDuration, 
-  getActivitiesBySeason, 
+  getActivitiesBySeason,
+  getActivityById, 
   getActivitiesByName,
   deleteActivity
 }
