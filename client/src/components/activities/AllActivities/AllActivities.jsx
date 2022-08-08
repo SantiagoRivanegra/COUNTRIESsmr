@@ -23,7 +23,7 @@ function AllActivities() {
         {
           allActivities && allActivities.map(a=>{
             return(
-              <CardActivity key={a.id} name={a.name} duration={a.duration} difficulty={a.difficulty} season={a.season} countries={a.countries.map(c=>c.nameCommon+', ')}/>
+              <CardActivity key={a.id} id={a.id} name={a.name} duration={a.duration} difficulty={a.difficulty} season={a.season} countries={a.countries.map(c=>c.nameCommon+', ')}/>
             )            
           })
         }
