@@ -97,7 +97,9 @@ const getCountriesByContinent = async (req, res) => {
   const { continent } = req.params
   try {
     const allCountries = await getAllCountries()
-    if(continent){
+    if(continent === 'All'){
+      res.status(200).send(allCountries)
+    } else {
       let contientName = allCountries.filter(c => c.continent.toLowerCase().includes(continent.toLowerCase()))
       contientName.length ? 
       res.status(200).send(contientName) :

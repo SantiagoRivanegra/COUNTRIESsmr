@@ -50,6 +50,7 @@ export function getCountriesByContinent(continent) {
 }
 
 export function orderByAlpha(order){
+  console.log(order)
   return{
     type: 'ORDER_COUNTRY_BY_ALPHA',
     payload: order
