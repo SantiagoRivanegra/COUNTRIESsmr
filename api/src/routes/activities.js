@@ -7,16 +7,16 @@ const router = Router();
 router.get('/', getActivities)
 
 //Get Activities By Difficulty
-router.get('/difficulty=:difficulty', getActivitiesByDifficulty)
+router.get('/difficulty/:difficulty', getActivitiesByDifficulty)
 
 //Get Activities By Duration
-router.get('/duration=:duration', getActivitiesByDuration)
+router.get('/duration/:duration', getActivitiesByDuration)
 
 //Get Activities By Season
-router.get('/season=:season', getActivitiesBySeason)
+router.get('/season/:season', getActivitiesBySeason)
 
 //Get Activities By Name
-router.get('/name=:name', getActivitiesByName)
+router.get('/name/:name', getActivitiesByName)
 
 //Get Activities By ID
 router.get('/id/:id', getActivityById)

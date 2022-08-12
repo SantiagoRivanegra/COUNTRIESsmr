@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAll, getCountryById, getCountryByName, getCountriesByPopulation, getCountriesByContinent } = require('../controllers/countries')
+const { getAll, getCountryById, getCountryByName, getCountriesByPopulation, getCountriesByContinent, getCountriesByActivity } = require('../controllers/countries')
 
 
 const router = Router();
@@ -18,5 +18,8 @@ router.get('/all/continent/:continent', getCountriesByContinent)
 
 //Get countries more or equal population to the enter number
 router.get('/all/population/:population', getCountriesByPopulation)
+
+//Get countries more or equal population to the enter number
+router.get('/activity/:activity', getCountriesByActivity)
 
 module.exports = router;

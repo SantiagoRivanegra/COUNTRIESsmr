@@ -34,7 +34,7 @@ function ActivityDetail() {
             }
       </div>
       <Link to='/activities'>
-        <button>GO to activities
+        <button>{spanishLang ? "Ir a todas las actividades" : "Go to activities"}
         </button>
       </Link>
     </div> 

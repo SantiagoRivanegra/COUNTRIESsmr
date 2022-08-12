@@ -97,7 +97,9 @@ const getCountriesByContinent = async (req, res) => {
   const { continent } = req.params
   try {
     const allCountries = await getAllCountries()
-    if(continent){
+    if(continent === 'All'){
+      res.status(200).send(allCountries)
+    } else {
       let contientName = allCountries.filter(c => c.continent.toLowerCase().includes(continent.toLowerCase()))
       contientName.length ? 
       res.status(200).send(contientName) :
@@ -126,10 +128,30 @@ const getCountriesByPopulation = async (req, res) => {
   }
 }
 
+/* Countries by Activity*/
+const getCountriesByActivity = async (req, res) => {
+  const { activity } = req.params
+  try {
+    const allCountries = await getAllCountries()
+    if(activity === 'all'){
+      res.status(200).send(allCountries)
+    } else {
+      let activityCountries = allCountries.filter(c => c.activities && c.activities.map(a => a.name).includes(activity))
+      activityCountries.length ? 
+      res.status(200).send(activityCountries) :
+      res.status(404).send('Activity not found')
+    }
+  }
+     catch (error) {
+    console.log(error + 'GetByNameControllerCountry')
+  }
+}
+
 module.exports = {
   getAll,
   getCountryById,
   getCountryByName,
   getCountriesByPopulation,
-  getCountriesByContinent
+  getCountriesByContinent,
+  getCountriesByActivity
 }
