@@ -17,13 +17,13 @@ export function getCountries(){
 export function getCountryByName(name){
   return async (dispatch) => {
     try {
-      const res = await axios('http://localhost:3001/countries?name='+name)
+      const res = await axios(`http://localhost:3001/countries/name/${name}`)
       return dispatch({
         type: 'GET_COUNTRIES_BY_NAME',
         payload: res.data
       })
     } catch (error) {
-      console.log(error)
+      alert("El pais ingresado:  '" + name + "'  no fue encontrado")
     }
 
   }
@@ -49,6 +49,26 @@ export function getCountriesByContinent(continent) {
   }
 }
 
+export function filterCountryByActivity(activity) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/countries/activity/${activity}`)
+    return dispatch({
+      type: 'GET_COUNTRIES_BY_ACTIVITY',
+      payload: res.data
+    })
+  }
+}
+
+export function amountOfPopulation(population) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/countries//all/population/${population}`)
+    return dispatch({
+      type: 'AMOUNT_OF_POPULATION',
+      payload: res.data
+    })
+  }
+}
+
 export function orderByAlpha(order){
   console.log(order)
   return{
@@ -56,6 +76,15 @@ export function orderByAlpha(order){
     payload: order
   }
 }
+
+export function orderByPopulation(order){
+  console.log(order)
+  return{
+    type: 'ORDER_COUNTRY_BY_POPULATION',
+    payload: order
+  }
+}
+
 
 export function getAllActivities(){
   return async (dispatch) => {

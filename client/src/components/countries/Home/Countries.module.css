@@ -17,3 +17,8 @@
   grid-template-columns: 125px 125px 125px 125px 125px;
   justify-content: space-around;
 }
+.containerFilters {
+  background: linear-gradient(to top, transparent, rgba(185, 184, 184, 0.473));
+	padding: 20px 0px;
+	width: 100vw;
+}
