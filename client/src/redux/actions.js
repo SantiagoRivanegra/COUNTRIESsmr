@@ -62,11 +62,16 @@ export function filterCountryByActivity(activity) {
 
 export function amountOfPopulation(population) {
   return async (dispatch) => {
-    const res = await axios(`http://localhost:3001/countries//all/population/${population}`)
-    return dispatch({
-      type: 'AMOUNT_OF_POPULATION',
-      payload: res.data
-    })
+    try {
+      const res = await axios(`http://localhost:3001/countries/all/population/${population}`)
+      return dispatch({
+        type: 'AMOUNT_OF_POPULATION',
+        payload: res.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 }
 
@@ -106,6 +111,56 @@ export function getActivityDetail(id){
     const res = await axios(`http://localhost:3001/activities/id/${id}`)
     return dispatch({
       type: 'GET_ACTIVITY_DETAIL',
+      payload: res.data
+    })
+  }
+}
+
+export function getActivityByName(name) {
+  return async (dispatch) => {
+    const res = await axios(`http:/localhost:3001/activities/name/${name}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_BY_NAME',
+      payload: res.data
+    })
+  }
+}
+
+export function getActivityByDuration(duration) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/activities/duration/${duration}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_BY_DURATION',
+      payload: res.data
+    })
+  }
+}
+
+export function getActivityByDifficulty(difficulty) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/activities/difficulty/${difficulty}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_BY_DIFFICULTY',
+      payload: res.data
+    })
+  }
+}
+
+export function getActivityBySeason(season) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/activities/season/${season}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_BY_SEASON',
+      payload: res.data
+    })
+  }
+}
+
+export function getActivityByCountries(countries) {
+  return async (dispatch) => {
+    const res = await axios(`http://localhost:3001/activities/countries/${countries}`)
+    return dispatch({
+      type: 'GET_ACTIVITY_BY_COUNTRIES',
       payload: res.data
     })
   }

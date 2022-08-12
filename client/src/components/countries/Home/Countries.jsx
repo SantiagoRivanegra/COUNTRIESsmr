@@ -16,6 +16,7 @@ function Countries(){
   const countries = useSelector(state => state.countries)
   const activities = useSelector(state => state.allActivities)
   const spanishLang = useSelector(state => state.spanishLang);
+  const [amount, setAmount] = useState("");
 
   //Pagination
   const [order, setOrder] = useState('')
@@ -62,8 +63,23 @@ function Countries(){
   }
 
   function handleFilterHabitantes(e){
-    dispatch(amountOfPopulation(e.target.value))
-    setCurrentPage(1)
+    e.preventDefault()
+    if(amount !== ''){
+      dispatch(amountOfPopulation(amount))
+      setAmount("")
+      setCurrentPage(1)
+    }
+    else {
+      {spanishLang ?  alert('Por favor, ingrese un valor numerico') : 
+                      alert('Please, enter a numerical value')}
+      
+      dispatch(getCountries())
+    }
+  }
+
+  function handleInputChange(e){
+    e.preventDefault();
+    setAmount(e.target.value);
   }
 
   return(
@@ -106,9 +122,14 @@ function Countries(){
         <option value='lower'>{spanishLang ? "Menor Poblacion" : "Lower Population"}</option>
         </select>
 
-        <input placeholder={spanishLang ? "Pobalcion" : "Population"}/>
         <label>Filtro Habitantes: </label>
-      <button onClick={e => handleFilterHabitantes(e)}>FiltroNuevo
+        <input 
+          type = 'number'
+          value = {amount}
+          placeholder={spanishLang ? "Pobalcion" : "Population"}
+          onChange={(e) => handleInputChange(e)}
+        />
+      <button type = 'submit' onClick={e => handleFilterHabitantes(e)}>FiltroNuevo
       </button>
       </div>
 
@@ -137,7 +158,7 @@ function Countries(){
         {
           currentCountry ? currentCountry.map(c =>{
             return(
-              <Card flag={c.flag} name={c.nameCommon} continent={c.continent} id={c.id}/>
+              <Card key={c.id} flag={c.flag} name={c.nameCommon} continent={c.continent} id={c.id}/>
             )
           }) : <div>hola</div>
         }

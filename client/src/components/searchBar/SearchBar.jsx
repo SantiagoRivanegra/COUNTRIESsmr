@@ -20,7 +20,9 @@ function SearchBar() {
       dispatch(getCountryByName(name))
       setName("")
     } else {
-      alert('No estas buscando nada, ingrese un pais')
+      {spanishLang ?  alert('Por favor, ingrese un pais') : 
+                      alert('Please, enter a country')}
+      
       dispatch(getCountries())
     }
   }

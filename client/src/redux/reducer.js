@@ -129,6 +129,36 @@ export default function reducer(state = initialState, {type, payload}){
       activitiesID: payload
     }
 
+    case 'GET_ACTIVITY_BY_NAME':
+      return {
+          ...state,
+          activities: payload
+      }
+
+    case 'GET_ACTIVITY_BY_DURATION':
+      return {
+        ...state,
+        activities: payload
+    }
+    
+    case 'GET_ACTIVITY_BY_DIFFICULTY':
+      return {
+          ...state,
+          activities: payload
+      }
+    
+    case 'GET_ACTIVITY_BY_SEASON':
+      return {
+          ...state,
+          activities: payload
+      }
+      
+    case 'GET_ACTIVITY_BY_COUNTRIES':
+      return {
+          ...state,
+          activities: payload
+      }      
+
     default: return state
   }
 }
