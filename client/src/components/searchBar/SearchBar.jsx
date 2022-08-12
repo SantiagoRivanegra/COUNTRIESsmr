@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getCountryByName } from '../../redux/actions'
+import { getCountryByName, getCountries } from '../../redux/actions';
 
 import s from './SearchBar.module.css'
 
@@ -21,6 +21,7 @@ function SearchBar() {
       setName("")
     } else {
       alert('No estas buscando nada, ingrese un pais')
+      dispatch(getCountries())
     }
   }
 

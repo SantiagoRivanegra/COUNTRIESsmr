@@ -19,11 +19,12 @@ export function getCountryByName(name){
     try {
       const res = await axios(`http://localhost:3001/countries/name/${name}`)
       return dispatch({
-        type: 'GET_COUNTRIES_BY_NAME',
+        type: 'GET_COUNTRY_BY_NAME',
         payload: res.data
       })
     } catch (error) {
       alert("El pais ingresado:  '" + name + "'  no fue encontrado")
+      return dispatch(getCountries())
     }
 
   }
