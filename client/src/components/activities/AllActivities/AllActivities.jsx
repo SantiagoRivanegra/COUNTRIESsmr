@@ -11,7 +11,7 @@ import s from './AllActivities.module.css'
 function AllActivities() {
 
   const dispatch = useDispatch()
-  const allActivities = useSelector(state => state.allActivities)
+  const allActivities = useSelector(state => state.activities)
   const spanishLang = useSelector(state => state.spanishLang);
 
   useEffect(() =>{
@@ -50,7 +50,7 @@ function AllActivities() {
       <div className={s.selects}>
 
         <select onChange={e => filterByName(e)}>
-        <option>{spanishLang ? "Todos" : "All"}</option>
+        <option hidden selected>{spanishLang ? "Todos" : "All"}</option>
         {
           allActivities && allActivities.map(a => {
             return(
@@ -61,16 +61,17 @@ function AllActivities() {
         </select>
 
         <select onChange={e => filetrByDifficulty(e)}>
-          <option>{spanishLang ? "dificultad" : "Difficulty"}</option>
+          <option hidden selected>{spanishLang ? "Dificultad" : "Difficulty"}</option>
           <option value='1'>1</option>
           <option value='2'>2</option>        
           <option value='3'>3</option>
           <option value='4'>4</option>
           <option value='5'>5</option>
+          <option>{spanishLang ? "Todas" : "All"}</option>
         </select>
 
         <select onChange={e => filterByDuration(e)}>
-          <option value='all'>{spanishLang ? "duracion" : "Duration"}</option>
+          <option hidden selected>{spanishLang ? "Duracion" : "Duration"}</option>
         {
           allActivities && allActivities.map(a => {
             return(
@@ -78,10 +79,11 @@ function AllActivities() {
             )
           })
         }
+        <option>{spanishLang ? "Todas" : "All"}</option>
         </select>
 
         <select onChange={e => filterBySeason(e)}>
-          <option value='all'>{spanishLang ? "temporada" : "Season"}</option>
+          <option hidden selected>{spanishLang ? "Temporada" : "Season"}</option>
         {
           allActivities && allActivities.map(a => {
             return(
@@ -89,10 +91,11 @@ function AllActivities() {
             )
           })
         }
+        <option>{spanishLang ? "Todas" : "All"}</option>
         </select>
 
         <select onChange={e => filterByCountries(e)}>
-          <option value='all'>{spanishLang ? "paises" : "countries"}</option>
+          <option hidden selected>{spanishLang ? "paises" : "countries"}</option>
         {/* {
           allActivities && allActivities.map(a => {
             return(
